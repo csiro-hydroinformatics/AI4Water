@@ -177,7 +177,7 @@ class MLRegressionExperiments(Experiments):
 
         self.param_space = [
             Integer(low=5, high=100, name='n_estimators', num_samples=self.num_samples),
-            Real(low=0.001, high=1.0, prior='log', name='learning_rate', num_samples=self.num_samples)
+            Real(low=0.001, high=1.0, prior='log-uniform', name='learning_rate', num_samples=self.num_samples)
         ]
         self.x0 = [50, 1.0]
         return {'model': {'ADABOOSTREGRESSOR': kwargs}}
@@ -233,7 +233,7 @@ class MLRegressionExperiments(Experiments):
 
         self.param_space = [
             Integer(low=500, high=5000, name='iterations', num_samples=self.num_samples),  # maximum number of trees that can be built
-            Real(low=0.0001, high=0.5, prior='log', name='learning_rate', num_samples=self.num_samples), # Used for reducing the gradient step.
+            Real(low=0.0001, high=0.5, prior='log-uniform', name='learning_rate', num_samples=self.num_samples), # Used for reducing the gradient step.
             Real(low=0.5, high=5.0, name='l2_leaf_reg', num_samples=self.num_samples),   # Coefficient at the L2 regularization term of the cost function.
             Real(low=0.1, high=10, name='model_size_reg', num_samples=self.num_samples),  # arger the value, the smaller the model size.
             Real(low=0.1, high=0.95, name='rsm', num_samples=self.num_samples),  # percentage of features to use at each split selection, when features are selected over again at random.
@@ -355,7 +355,7 @@ class MLRegressionExperiments(Experiments):
         self.path = "sklearn.ensemble.GradientBoostingRegressor"
         self.param_space = [
             Integer(low=5, high=500, name='n_estimators', num_samples=self.num_samples),  # number of boosting stages to perform
-            Real(low=0.001, high=1.0, prior='log', name='learning_rate', num_samples=self.num_samples),   #  shrinks the contribution of each tree
+            Real(low=0.001, high=1.0, prior='log-uniform', name='learning_rate', num_samples=self.num_samples),   #  shrinks the contribution of each tree
             Real(low=0.1, high=1.0, name='subsample', num_samples=self.num_samples),  # fraction of samples to be used for fitting the individual base learners
             Real(low=0.1, high=0.9, name='min_samples_split', num_samples=self.num_samples),
             Integer(low=2, high=30, name='max_depth', num_samples=self.num_samples),
@@ -368,7 +368,7 @@ class MLRegressionExperiments(Experiments):
         # TODO not hpo not converging
         self.path = "sklearn.ensemble.HistGradientBoostingRegressor"
         self.param_space = [
-            Real(low=0.0001, high=0.9, prior='log', name='learning_rate', num_samples=self.num_samples),  # Used for reducing the gradient step.
+            Real(low=0.0001, high=0.9, prior='log-uniform', name='learning_rate', num_samples=self.num_samples),  # Used for reducing the gradient step.
             Integer(low=50, high=500, name='max_iter', num_samples=self.num_samples),  # maximum number of trees.
             Integer(low=2, high=100, name='max_depth', num_samples=self.num_samples),  # maximum number of trees.
             Integer(low=10, high=100, name='max_leaf_nodes', num_samples=self.num_samples),  # maximum number of leaves for each tree
@@ -512,7 +512,7 @@ class MLRegressionExperiments(Experiments):
         self.param_space = [
             Categorical(categories=['gbdt', 'dart', 'goss'], name='boosting_type'),  # todo, during optimization not working with 'rf'
             Integer(low=10, high=200, name='num_leaves', num_samples=self.num_samples),
-            Real(low=0.0001, high=0.1,  name='learning_rate', prior='log', num_samples=self.num_samples),
+            Real(low=0.0001, high=0.1,  name='learning_rate', prior='log-uniform', num_samples=self.num_samples),
             Integer(low=20, high=500, name='n_estimators', num_samples=self.num_samples)
         ]
         self.x0 = ['gbdt', 31, 0.1, 100]
@@ -724,7 +724,7 @@ class MLRegressionExperiments(Experiments):
         self.param_space = [
             Integer(low=5, high=100, name='n_estimators', num_samples=self.num_samples),  #  Number of gradient boosted trees
             Integer(low=3, high=50, name='max_depth', num_samples=self.num_samples),     # Maximum tree depth for base learners
-            Real(low=0.0001, high=0.5, prior='log', name='learning_rate', num_samples=self.num_samples),     #
+            Real(low=0.0001, high=0.5, prior='log-uniform', name='learning_rate', num_samples=self.num_samples),     #
             #Categorical(categories=['gbtree', 'gblinear', 'dart'], name='booster'),  # todo solve error
             Real(low=0.1, high=0.9, name='gamma', num_samples=self.num_samples),  # Minimum loss reduction required to make a further partition on a leaf node of the tree.
             Real(low=0.1, high=0.9, name='min_child_weight', num_samples=self.num_samples),  # Minimum sum of instance weight(hessian) needed in a child.
@@ -747,7 +747,7 @@ class MLRegressionExperiments(Experiments):
         self.param_space = [
             Integer(low=5, high=200, name='n_estimators', num_samples=self.num_samples),  #  Number of gradient boosted trees
             #Integer(low=3, high=50, name='max_depth', num_samples=self.num_samples),     # Maximum tree depth for base learners
-            Real(low=0.0001, high=0.5, name='learning_rate', prior='log', num_samples=self.num_samples),     #
+            Real(low=0.0001, high=0.5, name='learning_rate', prior='log-uniform', num_samples=self.num_samples),     #
             Categorical(categories=['gbtree', 'gblinear', 'dart'], name='booster'),
             #Real(low=0.1, high=0.9, name='gamma', num_samples=self.num_samples),  # Minimum loss reduction required to make a further partition on a leaf node of the tree.
             #Real(low=0.1, high=0.9, name='min_child_weight', num_samples=self.num_samples),  # Minimum sum of instance weight(hessian) needed in a child.

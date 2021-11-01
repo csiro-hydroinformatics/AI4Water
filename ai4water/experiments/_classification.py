@@ -210,7 +210,7 @@ class MLClassificationExperiments(Experiments):
         self.param_space = [
             Categorical(categories=['gbdt', 'dart', 'goss', 'rf'], name='boosting_type'),
             Integer(low=10, high=200, name='num_leaves', num_samples=self.num_samples),
-            Real(low=0.0001, high=0.1, prior='log', name='learning_rate', num_samples=self.num_samples),
+            Real(low=0.0001, high=0.1, prior='log-uniform', name='learning_rate', num_samples=self.num_samples),
             Real(low=10, high=100, name='min_child_samples', num_samples=self.num_samples),
             Integer(low=20, high=500, name='n_estimators', num_samples=self.num_samples)
         ]
@@ -381,7 +381,7 @@ class MLClassificationExperiments(Experiments):
         self.param_space = [
             Integer(low=5, high=50, name='n_estimators', num_samples=self.num_samples),  # Number of gradient boosted trees
             Integer(low=3, high=30, name='max_depth', num_samples=self.num_samples),  # Maximum tree depth for base learners
-            Real(low=0.0001, high=0.5, prior='log', name='learning_rate', num_samples=self.num_samples),  #
+            Real(low=0.0001, high=0.5, prior='log-uniform', name='learning_rate', num_samples=self.num_samples),  #
             Categorical(categories=['gbtree', 'gblinear', 'dart'], name='booster'),
             Real(low=0.1, high=0.9, name='gamma', num_samples=self.num_samples),
             # Minimum loss reduction required to make a further partition on a leaf node of the tree.

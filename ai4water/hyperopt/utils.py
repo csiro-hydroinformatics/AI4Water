@@ -68,7 +68,7 @@ class Real(_Real, Counter):
     ----------
     ```python
     >>>from ai4water.hyperopt import Real
-    >>>lr = Real(low=0.0005, high=0.01, prior='log', name='lr')
+    >>>lr = Real(low=0.0005, high=0.01, prior='log-uniform', name='lr')
     ```
     """
     def __init__(self,
