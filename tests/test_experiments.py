@@ -126,7 +126,7 @@ class TestExperiments(unittest.TestCase):
             Integer(low=16, high=64, name='lstm_units', num_samples=2),
             Integer(low=3, high=15, name="lookback", num_samples=2),
             Categorical(categories=[4, 8, 12, 16, 24, 32], name='batch_size'),
-            Real(low=1e-6, high=1.0e-3, name='lr', prior='log', num_samples=2),
+            Real(low=1e-6, high=1.0e-3, name='lr', prior='log-uniform', num_samples=2),
             Categorical(categories=['relu', 'elu'], name='dense_actfn'),
         ]
 
